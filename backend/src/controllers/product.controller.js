@@ -4,7 +4,7 @@ const statusHTTP = require('../utils/statusHttp');
 
 async function findAllProducts(_req, res) {
   const allProducts = await productService.getAllProducts(); // getProducts ainda será criada na camada Services
-  return res.status(statusHTTP(allProducts.status)).json(allProducts);
+  return res.status(statusHTTP(allProducts.status)).json(allProducts.data);
 }
 
 async function findProductById(req, res) {

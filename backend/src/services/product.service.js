@@ -2,7 +2,7 @@ const { productModel } = require('../models');
 
 async function getAllProducts() {
   // Validar que é possível listas todos os produtos
-  const allProducts = productModel.findAll();
+  const allProducts = await productModel.findAll();
   return { status: 'SUCCESSFUL', data: allProducts };
 }
 

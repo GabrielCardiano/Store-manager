@@ -1,4 +1,4 @@
-// mocks de Service testes
+// mocks retornos da camada Service
 const allProducts = [
   {
     id: 1,
@@ -19,6 +19,7 @@ const product = {
   name: 'Martelo de Thor',
 };
 
+// mock retornos da camada Controller
 const allProductsSuccessful = {
   status: 'SUCCESSFUL',
   data: allProducts,
