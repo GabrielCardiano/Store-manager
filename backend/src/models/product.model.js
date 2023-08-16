@@ -17,7 +17,6 @@ async function insert(product) {
   const { name } = product;
   const query = 'INSERT INTO products (name) VALUES (?)';
   const [{ insertId }] = await connection.execute(query, [name]);
-  console.log('CADEEE??:', insertId);
   return insertId;
 }
 

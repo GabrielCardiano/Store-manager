@@ -1,3 +1,4 @@
+// rota GET
 // mocks retornos da camada Service
 const allProducts = [
   {
@@ -51,6 +52,21 @@ const productFromDB = {
   name: 'Martelo de Thor',
 };
 
+// rota POST
+// mock return da camada Controller
+const newProduct = {
+  id: 4,
+  name: 'ProdutoX',
+};
+
+const newProductSuccessful = {
+  status: 'CREATED',
+  data: newProduct,
+};
+
+const newProductId = { insertId: 4 }; 
+const productIdFromModel = 4;
+
 module.exports = {
   allProducts,
   product,
@@ -58,4 +74,8 @@ module.exports = {
   productSuccessful,
   allProductsFromDB,
   productFromDB,
+  newProduct,
+  newProductSuccessful,
+  newProductId,
+  productIdFromModel,
 };
