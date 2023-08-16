@@ -64,7 +64,6 @@ const newProductSuccessful = {
   data: newProduct,
 };
 
-const newProductId = { insertId: 4 }; 
 const productIdFromModel = 4;
 
 module.exports = {
@@ -76,6 +75,5 @@ module.exports = {
   productFromDB,
   newProduct,
   newProductSuccessful,
-  newProductId,
   productIdFromModel,
 };
