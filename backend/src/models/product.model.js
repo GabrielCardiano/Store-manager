@@ -13,7 +13,16 @@ async function findById(productId) {
   return camelize(product);
 }
 
+async function insert(product) {
+  const { name } = product;
+  const query = 'INSERT INTO products (name) VALUES (?)';
+  const [{ insertId }] = await connection.execute(query, [name]);
+  console.log('CADEEE??:', insertId);
+  return insertId;
+}
+
 module.exports = {
   findAll,
   findById,
+  insert,
 };

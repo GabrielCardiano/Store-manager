@@ -13,7 +13,14 @@ async function findProductById(req, res) {
   return res.status(statusHTTP(product.status)).json(product.data);
 }
 
+async function newProduct(req, res) {
+  const { body } = req; 
+  const product = await productService.createProduct(body); // criar na camada Service
+  return res.status(statusHTTP(product.status)).json(product.data);
+}
+
 module.exports = {
   findAllProducts,
   findProductById,
+  newProduct,
 };
