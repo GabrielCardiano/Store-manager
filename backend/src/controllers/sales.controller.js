@@ -3,7 +3,7 @@ const { salesService } = require('../services');
 const statusHTTP = require('../utils/statusHttp');
 
 async function findAllSales(_req, res) {
-  const allSales = await salesService.getAllSales(); // criar getAllProducts na camada Services
+  const allSales = await salesService.getAllSales(); // criar getAllProducts na camada 
   return res.status(statusHTTP(allSales.status)).json(allSales.data);
 }
 

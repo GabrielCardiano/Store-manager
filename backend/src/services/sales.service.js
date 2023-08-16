@@ -7,10 +7,11 @@ async function getAllSales() {
 
 async function getSalesById(salesId) {
   const sales = await salesModel.findById(salesId);
-  if (!sales) {
-    return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
+  console.log(sales);
+  if (sales.length === 0) {
+    return { status: 'NOT_FOUND', data: { message: 'Sale not found' } };
   }
-  return { satus: 'SUCCESSFUL', data: sales };
+  return { status: 'SUCCESSFUL', data: sales };
 }
 
 module.exports = {
