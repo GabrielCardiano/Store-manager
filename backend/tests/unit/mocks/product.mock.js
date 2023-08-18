@@ -64,7 +64,12 @@ const newProductSuccessful = {
   data: newProduct,
 };
 
+const newProductId = { insertId: 4 };
 const productIdFromModel = 4;
+
+// mock returns do middleware que valida name  
+const returnProductWithouName = { message: 'name is required' }; 
+const returnProductInvalidName = { message: 'name length must be at least 5 characters long' };
 
 module.exports = {
   allProducts,
@@ -75,5 +80,8 @@ module.exports = {
   productFromDB,
   newProduct,
   newProductSuccessful,
+  newProductId,
   productIdFromModel,
+  returnProductWithouName,
+  returnProductInvalidName,
 };

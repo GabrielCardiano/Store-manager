@@ -7,14 +7,25 @@ async function getAllSales() {
 
 async function getSalesById(salesId) {
   const sales = await salesModel.findById(salesId);
-  console.log(sales);
   if (sales.length === 0) {
     return { status: 'NOT_FOUND', data: { message: 'Sale not found' } };
   }
   return { status: 'SUCCESSFUL', data: sales };
 }
 
+async function createSales(sales) {
+  const saleId = await salesModel.insert(sales);
+  const sale = await salesModel.findById(saleId);
+  const itemsSold = sale.map((e) => {
+    delete e.date;
+    return e;
+  });
+  const newSale = { id: saleId, itemsSold };  
+  return { status: 'CREATED', data: newSale };
+}
+
 module.exports = {
   getAllSales,
   getSalesById,
+  createSales,
 };
