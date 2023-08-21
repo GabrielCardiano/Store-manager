@@ -72,6 +72,7 @@ const returnProductWithouName = { message: 'name is required' };
 const returnProductInvalidName = { message: 'name length must be at least 5 characters long' };
 
 // mock update products
+const productBeforeUpdateMock = { id: 1, name: 'Escudo do Capitão América' };
 const updatedProductMock = { id: 1, name: 'Martelo do Batman' };
 const seviceReturn = { status: 'SUCCESSFUL', data: updatedProductMock };
 
@@ -107,4 +108,5 @@ module.exports = {
   updatedProductMock,
   modelReturn,
   mockDBReturn,
+  productBeforeUpdateMock, 
 };
