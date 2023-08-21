@@ -24,7 +24,6 @@ async function update(productId, product) {
   const { name } = product;
   const query = 'UPDATE products SET name = ? WHERE id = ?';
   const updatedProduct = await connection.execute(query, [name, productId]);
-  console.log('aaaa>>>>', updatedProduct);
   return updatedProduct;
 }
 

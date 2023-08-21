@@ -35,7 +35,7 @@ describe('Testes de PRODUCT SERVICE: ', function () {
     sinon.stub(productModel, 'update').resolves(modelReturn);
 
     const productId = 1;
-    const productUpdate = { name: 'Martetelo do Batman' };
+    const productUpdate = { name: 'Martelo do Batman' };
 
     const responseService = await productService.updateProduct(productId, productUpdate);
     expect(responseService.status).to.equal('SUCCESSFUL');
