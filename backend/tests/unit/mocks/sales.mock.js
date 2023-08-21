@@ -111,6 +111,20 @@ const saleFromDB = [
   },
 ];
 
+// mock para registra nova Sale
+const newSale = [
+  {
+    productId: 1,
+    quantity: 1,
+  },
+  {
+    productId: 2,
+    quantity: 5,
+  },
+];
+
+const registerNewSale = { status: 'CREATED', data: { id: 5, itemsSold: newSale } };
+
 module.exports = {
   allSales,
   sale,
@@ -119,4 +133,6 @@ module.exports = {
   saleNotFound,
   allSalesFromDB,
   saleFromDB,
+  registerNewSale,
+  newSale,
 };
