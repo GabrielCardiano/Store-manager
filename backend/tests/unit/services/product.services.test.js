@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { productModel } = require('../../../src/models');
 const { productService } = require('../../../src/services');
-const { allProducts, product, newProduct, productIdFromModel } = require('../mocks/product.mock');
+const { allProducts, product, newProduct, productIdFromModel, modelReturn, updatedProductMock } = require('../mocks/product.mock');
 
 describe('Testes de PRODUCT SERVICE: ', function () {
   it('Lista todos os produtos com sucesso', async function () { 
@@ -29,6 +29,17 @@ describe('Testes de PRODUCT SERVICE: ', function () {
     const responseService = await productService.createProduct(inputProduct);
     expect(responseService.status).to.equal('CREATED');
     expect(responseService.data).to.deep.equal(newProduct); 
+  });
+
+  it('Atualiza informações de um produto com sucesso', async function () {
+    sinon.stub(productModel, 'update').resolves(modelReturn);
+
+    const productId = 1;
+    const productUpdate = { name: 'Martetelo do Batman' };
+
+    const responseService = await productService.updateProduct(productId, productUpdate);
+    expect(responseService.status).to.equal('SUCCESSFUL');
+    expect(responseService.data).to.deep.equal(updatedProductMock); 
   });
 
   afterEach(function () {

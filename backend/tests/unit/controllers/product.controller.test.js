@@ -10,6 +10,8 @@ const {
   productSuccessful,
   newProduct,
   newProductSuccessful,
+  seviceReturn,
+  updatedProductMock,
  } = require('../mocks/product.mock');
 
 const { expect } = chai;
@@ -51,6 +53,17 @@ describe('Testes de PRODUCT CONTROLLER: ', function () {
     await productController.newProduct(req, res);
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.have.been.calledWith(newProduct);
+  });
+
+  it('Atualiza informações de um produto com sucesso', async function () {
+    sinon.stub(productService, 'updateProduct').resolves(seviceReturn);
+
+    const req = { params: {}, body: { name: 'Martetelo do Batman' } };
+    const res = { status: sinon.stub().returnsThis(), json: sinon.stub() };
+
+    await productController.updateProduct(req, res);
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(updatedProductMock);
   });
 
   afterEach(function () {

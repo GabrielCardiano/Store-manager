@@ -68,8 +68,27 @@ const newProductId = { insertId: 4 };
 const productIdFromModel = 4;
 
 // mock returns do middleware que valida name  
-const returnProductWithouName = { message: 'name is required' }; 
+const returnProductWithouName = { message: 'name is required' };
 const returnProductInvalidName = { message: 'name length must be at least 5 characters long' };
+
+// mock update products
+const updatedProductMock = { id: 1, name: 'Martetelo do Batman' };
+const seviceReturn = { status: 'SUCCESSFUL', data: updatedProductMock };
+
+const modelReturn = { id: 1, name: 'Martetelo do Batman' };
+
+const mockDBReturn = [
+  {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    info: 'Rows matched: 1  Changed: 0  Warnings: 0',
+    serverStatus: 2,
+    warningStatus: 0,
+    changedRows: 0,
+  },
+  undefined,
+];
 
 module.exports = {
   allProducts,
@@ -84,4 +103,8 @@ module.exports = {
   productIdFromModel,
   returnProductWithouName,
   returnProductInvalidName,
+  seviceReturn,
+  updatedProductMock,
+  modelReturn,
+  mockDBReturn,
 };
