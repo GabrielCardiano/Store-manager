@@ -19,8 +19,16 @@ async function newProduct(req, res) {
   return res.status(statusHTTP(product.status)).json(product.data);
 }
 
+async function updateProduct(req, res) {
+  const { id } = req.params;
+  const { body } = req;
+  const product = await productService.updateProduct(id, body);
+  return res.status(statusHTTP(product.status)).json(product.data);
+}
+
 module.exports = {
   findAllProducts,
   findProductById,
   newProduct,
+  updateProduct,
 };
