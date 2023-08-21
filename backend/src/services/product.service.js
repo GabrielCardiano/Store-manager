@@ -32,9 +32,20 @@ async function updateProduct(productId, product) {
   return { status: 'SUCCESSFUL', data: updatedProduct };
 }
 
+async function deleteProduct(productId) {
+  //  validate Id existence
+  const existId = await productModel.findById(productId);
+  if (!existId) {
+    return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
+  }
+
+  await productModel.remove(productId);
+  return { status: 'NO_CONTENT' };
+}
 module.exports = {
   getAllProducts,
   getProductById,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
