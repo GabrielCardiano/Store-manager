@@ -1,4 +1,4 @@
-const { productSchema } = require('../services/validations/schema');
+const { productSchema } = require('./schema');
 
 const checkName = (req, res, next) => {
   const product = req.body;
