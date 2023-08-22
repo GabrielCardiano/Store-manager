@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const { productModel } = require('../../../src/models');
 const { productService } = require('../../../src/services');
-const { allProducts, product, newProduct, productIdFromModel, modelReturn, updatedProductMock, productBeforeUpdateMock } = require('../mocks/product.mock');
+const { allProducts, product, newProduct, productIdFromModel, modelReturn, updatedProductMock, productBeforeUpdateMock, mockDeleteDBReturn, mockDeleteFail } = require('../mocks/product.mock');
 
 describe('Testes de PRODUCT SERVICE: ', function () {
   it('Lista todos os produtos com sucesso', async function () {
@@ -45,6 +45,24 @@ describe('Testes de PRODUCT SERVICE: ', function () {
     const responseService = await productService.updateProduct(productId, productUpdate);
     expect(responseService.status).to.equal('SUCCESSFUL');
     expect(responseService.data).to.deep.equal(updatedProductMock);
+  });
+
+  it('Deleta produto com sucesso', async function () {
+    sinon.stub(productModel, 'remove').resolves(mockDeleteDBReturn);
+
+    const productId = 1;
+    const responseService = await productService.deleteProduct(productId);
+    expect(responseService.status).to.equal('NO_CONTENT');
+  });
+
+  it('Não deleta produto quando o id é inexistente', async function () {
+    sinon.stub(productModel, 'remove').resolves(mockDeleteFail);
+
+    const productId = 99;
+    const responseService = await productService.deleteProduct(productId);
+    console.log('RESPONSE>>>', responseService);
+    expect(responseService.status).to.equal('NOT_FOUND');
+    expect(responseService.data).to.be.deep.equal({ message: 'Product not found' });
   });
 
   afterEach(function () {

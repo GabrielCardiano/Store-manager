@@ -12,6 +12,8 @@ const {
   newProductSuccessful,
   seviceReturn,
   updatedProductMock,
+  mockServiceStatus,
+  mockServiceStatusWithMessage,
  } = require('../mocks/product.mock');
 
 const { expect } = chai;
@@ -64,6 +66,28 @@ describe('Testes de PRODUCT CONTROLLER: ', function () {
     await productController.updateProduct(req, res);
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(updatedProductMock);
+  });
+  
+  it('Deleta produto com sucesso', async function () {
+    sinon.stub(productService, 'deleteProduct').resolves(mockServiceStatus);
+
+    const req = { params: { id: 1 } };
+    const res = { status: sinon.stub().returnsThis(), end: sinon.stub() };
+
+    await productController.deleteProduct(req, res);
+    expect(res.status).to.have.been.calledWith(204);
+    expect(res.end).to.have.been.calledWith();
+  });
+
+  it('Não deleta produto quando o id é inexistente', async function () {
+    sinon.stub(productService, 'deleteProduct').resolves(mockServiceStatusWithMessage);
+
+    const req = { params: { id: 1 }, body: {} };
+    const res = { status: sinon.stub().returnsThis(), json: sinon.stub() };
+
+    await productController.deleteProduct(req, res);
+    expect(res.status).to.have.been.calledWith(404);
+    expect(res.json).to.have.been.calledWith({ message: 'Product not found' });
   });
 
   afterEach(function () {

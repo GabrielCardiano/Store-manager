@@ -33,13 +33,11 @@ async function updateProduct(productId, product) {
 }
 
 async function deleteProduct(productId) {
-  //  validate Id existence
-  const existId = await productModel.findById(productId);
-  if (!existId) {
+  //  validate product existence in database
+  const response = await productModel.remove(productId);
+  if (!response.affectedRows) {
     return { status: 'NOT_FOUND', data: { message: 'Product not found' } };
   }
-
-  await productModel.remove(productId);
   return { status: 'NO_CONTENT' };
 }
 module.exports = {

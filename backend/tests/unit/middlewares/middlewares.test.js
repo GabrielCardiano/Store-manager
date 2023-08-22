@@ -21,7 +21,7 @@ describe('Testa funções middleware de ValidateProduct', function () {
     expect(next.calledOnce);
   });
 
-  // Verificar MIddleware inválido
+  // Verificar Middleware inválido
   // it('testa de produto é inválido', async function () {
   //   const invalidReturn = {
   //     status: 400,
@@ -36,9 +36,9 @@ describe('Testa funções middleware de ValidateProduct', function () {
   //   console.log('REEEQ>>>', req);
   //   console.log('RESSS>>>', res);
   //   await checkName(req, res, next);
-  //   console.log('SATATUSSS>>>', res.status);
+  //   console.log('STATUSSS>>>', res.status);
   //   expect(res.status).to.have.been.calledWith(422);
-  //   expect(res.status).to.have.been.calledWith(invalidReturn.data.message);
+  //   expect(res.status).to.have.been.calledWith(invalidReturn.data);
   // });
 
   afterEach(function () {

@@ -91,6 +91,34 @@ const mockDBReturn = [
   undefined,
 ];
 
+// mock delete products
+const mockDeleteDBReturn = {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 0,
+    info: '',
+    serverStatus: 2,
+    warningStatus: 0,
+  };
+
+const mockDeleteFail = [
+   {
+    fieldCount: 0,
+    affectedRows: 0,
+    insertId: 0,
+    info: '',
+    serverStatus: 2,
+    warningStatus: 0,
+  },
+  undefined,
+];
+
+const mockServiceStatus = { status: 'NO_CONTENT' };
+const mockServiceStatusWithMessage = { 
+  status: 'NOT_FOUND', 
+  data: { message: 'Product not found' }, 
+};
+
 module.exports = {
   allProducts,
   product,
@@ -108,5 +136,9 @@ module.exports = {
   updatedProductMock,
   modelReturn,
   mockDBReturn,
-  productBeforeUpdateMock, 
+  productBeforeUpdateMock,
+  mockDeleteDBReturn,
+  mockDeleteFail,
+  mockServiceStatus,
+  mockServiceStatusWithMessage,
 };

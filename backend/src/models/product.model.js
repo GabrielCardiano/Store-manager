@@ -29,7 +29,8 @@ async function update(productId, product) {
 
 async function remove(productId) {
   const query = 'DELETE FROM products WHERE id = ?';
-  const deleteProduct = await connection.execute(query, [productId]);
+  const [deleteProduct] = await connection.execute(query, [productId]);
+  console.log(deleteProduct);
   return deleteProduct;
 }
 
